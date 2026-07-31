@@ -99,7 +99,7 @@ class Post implements Postable
 
         // Handle media upload for featured image
         if ($media->isNotEmpty() && ! isset($params['featured_media'])) {
-            $mediaUploader = (new Media)
+            $mediaUploader = (new Media())
                 ->forSite($this->siteUrl)
                 ->withCredentials($this->username, $this->applicationPassword);
 

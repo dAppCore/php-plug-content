@@ -21,20 +21,11 @@ class Auth implements Authenticable
 
     private const TOKEN_URL = 'https://api.medium.com/v1/tokens';
 
-    private string $clientId;
-
-    private string $clientSecret;
-
-    private string $redirectUri;
-
     public function __construct(
-        string $clientId = '',
-        string $clientSecret = '',
-        string $redirectUri = ''
+        private readonly string $clientId = '',
+        private readonly string $clientSecret = '',
+        private readonly string $redirectUri = '',
     ) {
-        $this->clientId = $clientId;
-        $this->clientSecret = $clientSecret;
-        $this->redirectUri = $redirectUri;
     }
 
     public static function identifier(): string

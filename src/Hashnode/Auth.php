@@ -21,11 +21,9 @@ class Auth implements Authenticable
 
     private const API_URL = 'https://gql.hashnode.com';
 
-    private string $accessToken;
-
-    public function __construct(string $accessToken = '')
-    {
-        $this->accessToken = $accessToken;
+    public function __construct(
+        private readonly string $accessToken = '',
+    ) {
     }
 
     public static function identifier(): string

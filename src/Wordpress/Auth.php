@@ -21,15 +21,12 @@ class Auth implements Authenticable
 
     private string $siteUrl;
 
-    private ?string $username = null;
-
-    private ?string $applicationPassword = null;
-
-    public function __construct(string $siteUrl = '', ?string $username = null, ?string $applicationPassword = null)
-    {
+    public function __construct(
+        string $siteUrl = '',
+        private readonly ?string $username = null,
+        private readonly ?string $applicationPassword = null,
+    ) {
         $this->siteUrl = rtrim($siteUrl, '/');
-        $this->username = $username;
-        $this->applicationPassword = $applicationPassword;
     }
 
     public static function identifier(): string

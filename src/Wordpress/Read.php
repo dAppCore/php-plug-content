@@ -152,8 +152,11 @@ class Read implements Readable
                 'status' => $post['status'],
                 'date' => $post['date'],
             ], $data),
-            'total' => (int) ($response->header('X-WP-Total') ?? count($data)),
-            'total_pages' => (int) ($response->header('X-WP-TotalPages') ?? 1),
+            // Response::header() returns '' (not null) when the header is
+            // absent, so the fallback has to be ?: — with ?? it never fires
+            // and a proxy that strips these headers silently reports total: 0.
+            'total' => (int) ($response->header('X-WP-Total') ?: count($data)),
+            'total_pages' => (int) ($response->header('X-WP-TotalPages') ?: 1),
         ]);
     }
 

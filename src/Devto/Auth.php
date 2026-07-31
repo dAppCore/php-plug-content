@@ -21,11 +21,9 @@ class Auth implements Authenticable
 
     private const API_URL = 'https://dev.to/api';
 
-    private string $apiKey;
-
-    public function __construct(string $apiKey = '')
-    {
-        $this->apiKey = $apiKey;
+    public function __construct(
+        private readonly string $apiKey = '',
+    ) {
     }
 
     public static function identifier(): string
